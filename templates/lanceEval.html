@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+
+
+<br><br>
+<div class="card">
+  <h5 class="card-header">Lancer l'évaluation </h5>
+  <div class="card-body">
+    <form method="POST">{% csrf_token %}
+      {{ ev_form|crispy }}
+      <input type="submit" style="float: right;" class="btn btn-primary" value="Save Publication"/>
+    </form>
+  </div>
+ </div>
+<br><br><br><br><br><br><br>
+{% endblock %}

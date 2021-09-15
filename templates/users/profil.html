@@ -1,0 +1,271 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<br>
+<div class="container">
+  <h2>Bienvenue sur votre profile Mr.{{user.username}} </h2>
+<!-- Volet administratif -->
+  <div class="card" id="info">
+    <h5 class="card-header">Volet administratif </h5>
+    <div class="card-body">
+      <img style="float: right;
+      width: 150px;
+      height: 150px;
+      " src="{% static 'site_static/img/chala.jpg'%}">
+      <h6 class="card-title"><b>Nom:</b> {{user.doctorant.nom}}</h6>
+      <h6 class="card-title"><b>Prénom:</b> {{user.doctorant.prenom}} </h6>
+      <h6 class="card-title"><b>Email:</b> {{user.email}} </h6>
+      <h6 class="card-title"><b>Phone:</b> {{user.doctorant.phone}} </h6>
+      <h6 class="card-title"><b>Né(e) le:</b> {{user.doctorant.date_naissance}} </h6>
+      <h6 class="card-title"><b>Adress:</b> {{user.doctorant.Adress}}</h6>
+      <h6 class="card-title"><b>Interne:</b> Oui</h6>
+      <h6 class="card-title"><b>Résidence:</b> Bouraoui Amar</h6>
+     
+      <a type="button" class="btn btn-primary" href="#updateInfo">Update</a>
+    </div>
+ </div>
+
+<br>
+<!-- situation actuel -->
+ <div class="card">
+  <h5 class="card-header">Situation actuel </h5>
+  <div class="card-body">
+    <h6 class="card-title"><b>Intitulé de these:</b> {{user.doctorant.these.Title}}</h6>
+    <h6 class="card-title"><b>Status:</b> inscrit </h6>
+    <h6 class="card-title"><b>Année:</b>{{user.doctorant.anne_univ}} </h6>
+  </div>
+ </div>
+
+ <br>
+<!-- Documents -->
+ <div class="card">
+  <h5 class="card-header">Documents </h5>
+  <div class="card-body">
+    <h6 class="card-title"><b>Vous trouvez dans cette section tout les documents correspondants a vitre inscription.</b></h6>
+  </div>
+  <!-- table -->
+  <div class="container">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Intitulé de document</th>
+        <th scope="col">Document</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Certificat de scolarité</th>
+        <td><a href="">cert.pdf</a></td>
+      </tr>
+      <tr>
+        <th scope="row">Relevé de note</th>
+        <td><a href="">notes.pdf</a></td>
+      </tr>
+      <tr>
+        <th scope="row">Formulaire de réinscription</th>
+        <td><a href="">réinscr_2021.pdf</a></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+ </div>
+
+ <br>
+<!-- volet scientifique -->
+ <div class="card">
+  <h5 class="card-header">Volet scientifique </h5>
+  <div class="card-body">
+   
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="parcours-tab" data-toggle="tab" href="#parcours" role="tab" aria-controls="parcours" aria-selected="true">Parcours</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="conf-tab" data-toggle="tab" href="#conf" role="tab" aria-controls="conf" aria-selected="false">Conférences</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="modules-tab" data-toggle="tab" href="#modules" role="tab" aria-controls="modules" aria-selected="false">Modules</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="pub-tab" data-toggle="tab" href="#pub" role="tab" aria-controls="pub" aria-selected="false">Publications</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="other-tab" data-toggle="tab" href="#other" role="tab" aria-controls="other" aria-selected="false">Autres activitées</a>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+
+      <!-- Prcours ---------------------->
+      <div class="tab-pane fade show active" id="parcours" role="tabpanel" aria-labelledby="parcours-tab">
+         <!-- table -->
+      <div class="container">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Année doctorale</th>
+              <th scope="col">Année</th>
+              <th scope="col">Décision</th>
+              <th scope="col">Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Première année</th>
+              <td>2016/2017</td>
+              <td>Favorable</td>
+              <td><a href=""> Eat_d_avancement.pdf</a></td>
+            </tr>
+            <tr>
+              <th scope="row">Deuxième année</th>
+              <td>2017/2018</td>
+              <td>Favorable</td>
+              <td><a href=""> Eat_d_avancement.pdf</a></td>
+            </tr>
+            <tr>
+              <th scope="row">Troisième  année</th>
+              <td>2018/2019</td>
+              <td>Favorable</td>
+              <td><a href=""> Eat_d_avancement.pdf</a></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+      </div>
+
+      <!-- Confs ---------------------->
+      <div class="tab-pane fade" id="conf" role="tabpanel" aria-labelledby="conf-tab">
+                 <!-- table -->
+      <div class="container">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Année doctorale</th>
+              <th scope="col">Titre</th>
+              <th scope="col">Date</th>
+              <th scope="col">Lieu</th>
+              <th scope="col">Détails</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Première année</th>
+              <td>IoT</td>
+              <td>03/06/2020</td>
+              <td>Toulouse , France</td>
+              <td><a href="">Plus de détails</a></td> 
+            </tr>
+            <tr>
+              <th scope="row">Première année</th>
+              <td>Autonoumous Driving</td>
+              <td>04/03/2021</td>
+              <td>SilliconValley , California</td>
+              <td><a href="">Plus de détails</a></td> 
+            </tr>
+          </tbody>
+        </table>
+    </div>
+      </div>
+
+      <!-- Modules ---------------------->
+      <div class="tab-pane fade" id="modules" role="tabpanel" aria-labelledby="modules-tab">
+       <!-- table -->
+      <div class="container">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Intitulé</th>
+              <th scope="col">Credit</th>
+              <th scope="col">Volume horaire</th>
+              <th scope="col">Intervenant</th>
+              <th scope="col">Décision</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Analyse de sentiments</th>
+              <td>5</td>
+              <td>45 h</td>
+              <td><a href="">Andrew Ng</a></td>
+              <td>Note</td>
+            </tr>
+            <tr>
+              <th scope="row">Deep learning</th>
+              <td>5</td>
+              <td>40 h</td>
+              <td><a href="">Hamdad Leila</a></td>
+              <td>Note</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+      </div>
+        
+      <!-- Pubs ---------------------->
+      <div class="tab-pane fade" id="pub" role="tabpanel" aria-labelledby="pub-tab">
+          <!-- table -->
+      <div class="container">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Année doctorale</th>
+              <th scope="col">Titre de journale</th>
+              <th scope="col">Rang</th>
+              <th scope="col">Date de Depot</th>
+              <th scope="col">Date de publication</th>
+              <th scope="col">Détails</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Première année</th>
+              <td>EPJ Data Science</td>
+              <td>A</td>
+              <td>15/03/2017</td>
+              <td>16/05/2017</td>
+              <td><a href="">Lien de revue</a></td>
+              
+            </tr>
+          </tbody>
+        </table>
+    </div>
+      </div>
+
+      <!-- others ---------------------->
+      <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="other-tab">others acts</div>
+    </div>
+
+    <!-- tabs end  -->
+  </div>
+ </div>
+
+ <br><br>
+
+ <!-- forms -->
+
+ <div class="card" id="updateInfo">
+  <h5 class="card-header">Mis à jour des information </h5>
+  <div class="card-body">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Profile Info</legend>
+          {{ p_form }}
+      </fieldset>
+      <div class="form-group">
+          <a href=""  style="float: right;" class="btn btn-outline-info" type="submit">Update </a>
+      </div>
+  </form>
+
+  </div>
+ </div>
+      
+
+
+</div>
+
+
+{% endblock %}

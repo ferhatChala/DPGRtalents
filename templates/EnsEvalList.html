@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+
+ <br><br>
+  <div class="card">
+    <h5 class="card-header">Mes évaluations </h5>
+    <div class="card-body">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Doctorant</th>
+            <th scope="col">Sujet</th>
+            <th scope="col">Directeur</th>
+            <th scope="col">Rapport</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for pln in enseval_list  %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{pln.Prioritaire.nom}}</td>
+            <td>{{pln.Intitule}}</td>
+            <td>{{pln.Prioritaire.dir_these}}</td>
+            <td><a type="button" href="{{pln.doc.url}}" download="{{pln.doc.url}}">{{pln.doc}}</a></td>
+            <td><a href="{% url 'evaluer_rpprt_view' %}" type="submit" class="btn btn-primary">Evaluation</a></td>                              
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    
+     
+    </div>
+   </div>
+
+  
+
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}

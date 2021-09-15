@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8">
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DPGR Talents</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'site_static/css/style.css'%}">
+  </head>
+  <body>
+ <!--  nav bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #114572;">
+      <a class="navbar-brand" href="#">DPGR Talents</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+          
+          <li class="nav-item">
+            <a class="nav-link" href="#">Accueil</a>
+          </li>
+        {% if user.is_authenticated %}
+        {% if user.is_doctorant %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Demandes
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Réinscription</a>
+              <a class="dropdown-item" href="#">Changement d'Intitulé</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Changement de thèse</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'profile' %}">Mon compte</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Soummesion
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'soum_rpprt_view' %}">Soumetter une rapport </a>
+              <a class="dropdown-item" href="#">Publications</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="{% url 'EvaluationJury_list_view' %}">Commentaires des jurys</a>
+            </div>
+          </li>
+          {% endif %}
+
+
+          {% if user.is_lab_dir %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'lance_eval_view' %}">Lancer Eval</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'affct_jury_view' %}">Affecter des jurys</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'affectation_list_view' %}">Planning des éval</a>
+          </li>
+          {% endif %}
+
+          {% if user.is_cs %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'ensevals_list_view' %}">Evaluer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">List doctorants</a>
+          </li>
+          {% endif %}
+
+
+
+
+         
+
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+        {% if user.is_authenticated %}
+           <a style="
+               color: aliceblue;
+               margin-right: 15px;
+           ">
+            Bonjour, {{user.username}}</a>
+           <a class="btn btn-outline-primary my-2 my-sm-0" href="{% url 'logout' %}">Logout</a>
+        {% else %}
+           <a class="btn btn-outline-primary my-2 my-sm-0" href="{% url 'login' %}">Login</a>
+        {% endif %}  
+      </div>
+    </nav>
+    <!--  volet admin 
+    <div class="container">
+    <div class="card">
+      <h5 class="card-header">Volet Administratif</h5>
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+    </div>
+    -->
+
+
+    
+
+      <!--  Content block  -->
+     <div class="container">
+        {% block content %}
+        {% endblock %}
+     </div>
+
+     <div class="container">
+     
+    
+    </div>
+    
+    <br><br><br><br><br>
+    <br><br><br><br>
+  
+  
+
+     <!-- footer -->
+     <footer class="text-center text-white" style="background-color: #114572;">
+      <!-- Grid container -->
+      <!-- Grid container -->
+    
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2020 Copyright: 
+        <a class="text-white" href="https://www.esi.dz/">Ecole nationale Supérieure d'Informatique المدرسة الوطنية العليا للإعلام الآلي</a> <br>
+        <a class="text-white" href="https://www.esi.dz/">BPM68 16270, Oued Smar, Alger. Tél : 023939132 ; Fax : 023939142 ; http://www.esi.dz</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

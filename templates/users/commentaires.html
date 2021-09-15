@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+  
+<br><br><br>
+<div class="container">
+  <div class="card">
+    <h5 class="card-header">Commentaires des jurys</h5>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Commentaires</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for ev in eval_jry_list  %}
+        {% if ev.doctorant.nom == user.doctorant.nom %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{ev.evaluation}}</td>
+            <td>{{ev.Commontaire}}</td>
+          </tr>
+        {% endif %} 
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+   </div>
+</div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}

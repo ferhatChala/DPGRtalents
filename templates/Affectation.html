@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<br><br>
+<div class="container">
+  <div class="card">
+    <h5 class="card-header">Affectation des jurys</h5>
+    <div class="card-body">
+      <form method="POST">{% csrf_token %}
+        {{ affjry_form|crispy }}
+        <input type="submit" style="float: right;" class="btn btn-primary" value="Enregistrer" />
+      </form>
+    </div>
+   </div>
+  
+</div>
+
+<br><br><br><br><br>
+{% endblock %}

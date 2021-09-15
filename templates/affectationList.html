@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+  
+<br><br><br>
+<div class="container">
+  <div class="card">
+    <h5 class="card-header">Planning des évaluations</h5>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Doctorant</th>
+            <th scope="col">Sujet</th>
+            <th scope="col">Directeur</th>
+            <th scope="col">Comission</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for pln in object_list  %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{pln.doctorant}}</td>
+            <td>{{pln.doctorant.these}}</td>
+            <td>{{pln.doctorant.dir_these}}</td>
+            <td>{{pln.JuryOne}} - {{pln.JuryTwo}}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      <a type="submit" class="btn btn-primary" style="float: right;" href="{% url 'affct_jury_view' %}" >Ajouter Planning</a>
+    </div>
+   </div>
+</div>
+</div>
+<br><br><br><br><br><br><br><br>
+{% endblock %}
